@@ -41,7 +41,7 @@ export const vehicleApiSlice = apiSlice.injectEndpoints({
         method: 'PUT',
         body: data
       }),
-      invalidatesTags: ['Vehicles']
+      invalidatesTags: ['Vehicles', 'OneVehicles']
     }),
     deleteVehicle: builder.mutation<void, string>({
       query: (id) => ({
