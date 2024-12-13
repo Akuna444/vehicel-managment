@@ -41,7 +41,7 @@ export default function UserAuthForm() {
 
   const defaultValues = {
     email: 'admin@gmail.com',
-    password: 'passpass'
+    password: 'testpassword'
   };
 
   const form = useForm<UserFormValue>({
