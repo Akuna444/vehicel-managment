@@ -28,8 +28,9 @@ const VehicleForm = ({
   isModalOpen: boolean;
   setIsModalOpen: (state: boolean) => void;
 }) => {
-  const [addVehicle] = usePostVehicleMutation();
-  const [updateVehicle] = useUpdateVehicleMutation();
+  const [addVehicle, { isLoading: addIsLoading }] = usePostVehicleMutation();
+  const [updateVehicle, { isLoading: updateIsLoading }] =
+    useUpdateVehicleMutation();
 
   const { toast } = useToast();
 
@@ -219,8 +220,12 @@ const VehicleForm = ({
 
             {/* Submit Button */}
             <div className="flex justify-end">
-              <Button type="submit">
-                {data ? 'Update Vehicle' : 'Add Vehicle'}
+              <Button disabled={addIsLoading || updateIsLoading} type="submit">
+                {addIsLoading || updateIsLoading
+                  ? 'Loading...'
+                  : data
+                    ? 'Update Vehicle'
+                    : 'Add Vehicle'}
               </Button>
             </div>
           </form>
