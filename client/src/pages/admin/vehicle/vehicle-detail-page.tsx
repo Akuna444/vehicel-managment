@@ -30,13 +30,13 @@ export default function VehicleDetailPage() {
         </>
       ) : (
         <>
-          <Button onClick={() => router.push('/vehicles')}>
+          <Button className="m-4" onClick={() => router.push('/vehicles')}>
             <ChevronLeftIcon className="h-4 w-4" />
             Back
           </Button>
           <div className="detail__card mx-4 grid  grid-cols-1 gap-6 py-6 lg:grid-cols-4">
             <div className=" col-span-1 flex flex-col gap-6 lg:col-span-1">
-              <Card className="detail__card bg-white">
+              <Card className="detail__card bg-white dark:bg-slate-700">
                 <CardHeader className="flex flex-row items-center justify-between font-bold">
                   <p className="text-xl"> Profile</p>
                 </CardHeader>
@@ -49,7 +49,7 @@ export default function VehicleDetailPage() {
               </Card>
             </div>
             {/* contact information  */}
-            <Card className=" card__detail col-span-1 bg-white lg:col-span-3">
+            <Card className=" card__detail bg- col-span-1 dark:bg-slate-700 lg:col-span-3">
               <CardHeader className="text-xl font-bold">
                 Contact Information
               </CardHeader>

@@ -119,7 +119,7 @@ const VehicleForm = ({
             encType="multipart/form-data"
           >
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
                 Vehicle Name
               </label>
               <input
@@ -136,7 +136,7 @@ const VehicleForm = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
                 Vehicle Make
               </label>
               <input
@@ -153,7 +153,7 @@ const VehicleForm = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
                 Vehicle Model
               </label>
               <input
@@ -170,7 +170,7 @@ const VehicleForm = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
                 Vehicle Year
               </label>
               <input
@@ -187,7 +187,7 @@ const VehicleForm = ({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
                 Vehicle Status
               </label>
               <select
@@ -206,7 +206,7 @@ const VehicleForm = ({
 
             {!data && (
               <div>
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium text-gray-700 dark:text-white">
                   Vehicle Image
                 </label>
                 <input

@@ -74,7 +74,7 @@ export default function VehicleTable({ data }: DataTableProps) {
   });
 
   return (
-    <div className="dark:bg-dark-var1 space-y-4 bg-white px-6 dark:text-white">
+    <div className="dark:bg-dark-var1 space-y-4 bg-white px-6 dark:bg-slate-700 dark:text-white">
       <DataTableToolbar table={table} />
 
       <ScrollArea className="h-[calc(80vh-220px)] overflow-hidden rounded-md border md:h-[calc(80dvh-80px)]">
