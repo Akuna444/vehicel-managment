@@ -8,6 +8,12 @@ export const vehicleApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ['Vehicles']
     }),
+    getVehicleById: builder.query({
+      query: (id) => ({
+        url: `/vehicle/one/${id}`
+      }),
+      providesTags: ['OneVehicles']
+    }),
     countVehicles: builder.query({
       query: () => ({
         url: `/vehicle/count`
@@ -20,13 +26,13 @@ export const vehicleApiSlice = apiSlice.injectEndpoints({
         method: 'POST',
         body: data
       }),
-      invalidatesTags: ['Vehicles']
+      invalidatesTags: ['Vehicles', 'VehiclesCount']
     }),
     updateVehicle: builder.mutation({
       query: ({ id, data }) => {
         return {
-          url: `/vehicle/update/${id}`,
-          method: 'PATCH',
+          url: `/vehicle/${id}`,
+          method: 'PUT',
           body: data
         };
       },
@@ -34,10 +40,10 @@ export const vehicleApiSlice = apiSlice.injectEndpoints({
     }),
     deleteVehicle: builder.mutation({
       query: (id) => ({
-        url: `/vehicle/delete/${id}`,
+        url: `/vehicle/${id}`,
         method: 'DELETE'
       }),
-      invalidatesTags: ['Vehicles']
+      invalidatesTags: ['Vehicles', 'VehiclesCount']
     })
   })
 });
@@ -47,5 +53,6 @@ export const {
   useDeleteVehicleMutation,
   usePostVehicleMutation,
   useUpdateVehicleMutation,
-  useCountVehiclesQuery
+  useCountVehiclesQuery,
+  useGetVehicleByIdQuery
 } = vehicleApiSlice;

@@ -1,5 +1,6 @@
 import { backendUrl } from '@/lib/utils';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { logout } from '../features/auth/authSlice';
 
 const addTokenToRequest = async (headers, { getState }) => {
   const state = getState();
@@ -12,20 +13,28 @@ const addTokenToRequest = async (headers, { getState }) => {
   return headers;
 };
 
+const baseQueryWithReauth = async (args, api, extraOptions) => {
+  const baseQuery = fetchBaseQuery({
+    baseUrl: backendUrl,
+    prepareHeaders: (headers, { getState }) =>
+      addTokenToRequest(headers, { getState })
+  });
+
+  const result = await baseQuery(args, api, extraOptions);
+
+  if (result.error && result.error.status === 401) {
+    api.dispatch(logout());
+  }
+
+  return result;
+};
+
 export const apiSlice = createApi({
   reducerPath: 'api',
-  tagTypes: ['Vehicles', 'VehiclesCount'],
-  baseQuery: fetchBaseQuery({
-    baseUrl: backendUrl,
-    prepareHeaders: (headers, { getState }) => {
-      return addTokenToRequest(headers, { getState });
-    }
-  }),
+  tagTypes: ['Vehicles', 'OneVehicles', 'VehiclesCount'],
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({}),
-  // this func will refetch the datas when page focused
   refetchOnFocus: true
 });
 
-// the use hook below is automaticlly created by reduk toolkit, you just can see the template
-// useGetAllTodosQuery is for getAllTodos above, and usePostTodoMutation is for postTodo, etc.
 export default apiSlice;

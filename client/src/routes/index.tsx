@@ -1,6 +1,6 @@
 import NotFound from '@/pages/shared/not-found';
 import { Suspense, lazy } from 'react';
-import { Link, Navigate, Outlet, useRoutes } from 'react-router-dom';
+import { Navigate, Outlet, useRoutes } from 'react-router-dom';
 
 const DashboardLayout = lazy(
   () => import('@/components/layout/dashboard-layout')
@@ -8,10 +8,14 @@ const DashboardLayout = lazy(
 
 import AdminSignInPage from '@/pages/shared/auth/signin';
 import PrivateRoute from './private-routes';
-import VehiclePage from '@/pages/admin/vehicle';
+
 import AdminSignupPage from '@/pages/shared/auth/signup';
 
 const DashboardPage = lazy(() => import('@/pages/admin/dashboard'));
+const VehicleDetailPage = lazy(
+  () => import('@/pages/admin/vehicle/vehicle-detail-page')
+);
+const VehiclePage = lazy(() => import('@/pages/admin/vehicle'));
 
 // ----------------------------------------------------------------------
 
@@ -36,6 +40,10 @@ export default function AppRouter() {
         {
           path: 'vehicles',
           element: <VehiclePage />
+        },
+        {
+          path: 'vehicles/:id',
+          element: <VehicleDetailPage />
         }
       ]
     }

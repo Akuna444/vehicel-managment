@@ -8,10 +8,13 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
-import { Edit, MoreHorizontal, Trash } from 'lucide-react';
+import { Book, Edit, MoreHorizontal, Trash } from 'lucide-react';
 import { useRouter } from '@/routes/hooks';
 import { useState } from 'react';
 import { Vehicle } from '@/types';
+import { useDeleteVehicleMutation } from '@/redux/services/vehicle';
+import { useToast } from '@/components/ui/use-toast';
+import VehicleForm from './componenets/vehicle-form';
 
 interface CellActionProps {
   data: Vehicle;
@@ -20,12 +23,31 @@ interface CellActionProps {
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const [loading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
+
+  const [deleteVehicle] = useDeleteVehicleMutation();
+
+  const { toast } = useToast();
 
   const onConfirm = async () => {};
 
+  const handleDelete = async (id) => {
+    try {
+      await deleteVehicle(id).unwrap();
+      toast({ title: 'Success', description: 'Deleted successfully!' });
+    } catch (error) {
+      console.log(error);
+      toast({ title: 'Success', description: 'Failed!' });
+    }
+  };
   return (
     <>
+      <VehicleForm
+        data={data}
+        setIsModalOpen={setIsModalOpen}
+        isModalOpen={isModalOpen}
+      />
       <AlertModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -43,9 +65,15 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
           <DropdownMenuItem
-            onClick={() => router.push(`/user/details/${data._id}`)}
+            onClick={() => router.push(`/vehicles/${data._id}`)}
           >
-            <Edit className="mr-2 h-4 w-4" /> Detail
+            <Book className="mr-2 h-4 w-4" /> Detail
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setIsModalOpen(true)}>
+            <Edit className="mr-2 h-4 w-4" /> Update
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => handleDelete(data._id)}>
+            <Trash className="mr-2 h-4 w-4" /> Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

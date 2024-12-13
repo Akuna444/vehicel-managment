@@ -43,9 +43,6 @@ const Stats = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{data?.count}</div>
-              <p className="text-xs text-muted-foreground">
-                +20.1% from last month
-              </p>
             </CardContent>
           </Card>
           <Card>
@@ -68,9 +65,6 @@ const Stats = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{data?.count}</div>
-              <p className="text-xs text-muted-foreground">
-                +20.1% from last month
-              </p>
             </CardContent>
           </Card>
           <Card>
@@ -94,9 +88,6 @@ const Stats = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{data?.count}</div>
-              <p className="text-xs text-muted-foreground">
-                +19% from last month
-              </p>
             </CardContent>
           </Card>
           <Card>
@@ -119,9 +110,6 @@ const Stats = () => {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{data?.count}</div>
-              <p className="text-xs text-muted-foreground">
-                +20.1% from last month
-              </p>
             </CardContent>
           </Card>
         </div>
