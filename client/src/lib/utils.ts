@@ -5,8 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const backendUrlBase = 'http://localhost:5000';
-export const backendUrl = 'http://localhost:5000/api/v1';
+export const backendUrlBase = 'https://vehicel-managment.onrender.com';
+export const backendUrl = 'https://vehicel-managment.onrender.com/api/v1';
 
 // date.ts
 export function getCurrentDate() {
