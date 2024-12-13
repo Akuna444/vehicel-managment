@@ -1,11 +1,10 @@
-import UsersTable from '..';
-
 import { DataTableSkeleton } from '@/components/shared/data-table-skeleton';
 import { useGetAllVehiclesQuery } from '@/redux/services/vehicle';
+import VehicleTable from '..';
+import { Vehicle } from '@/types';
 
 export default function AllVehicleListTable() {
   const { data, isLoading, error } = useGetAllVehiclesQuery();
-  const vehicles = data;
 
   if (isLoading) {
     return (
@@ -23,5 +22,5 @@ export default function AllVehicleListTable() {
     return <div>Failed to fetch</div>;
   }
 
-  return <UsersTable data={vehicles} />;
+  return <VehicleTable data={data as Vehicle[]} />;
 }

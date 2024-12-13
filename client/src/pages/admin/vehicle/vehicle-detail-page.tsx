@@ -1,5 +1,4 @@
 import DetailPageSkeleton from '@/components/shared/detail-page-skeleton';
-import AllVehicleListTable from '@/components/shared/tables/vehicle-table/componenets/all-vehicle-list-table';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import DetailCard from '@/components/ui/detail-card';
@@ -7,13 +6,14 @@ import { backendUrlBase } from '@/lib/utils';
 import { useGetVehicleByIdQuery } from '@/redux/services/vehicle';
 
 import { useRouter } from '@/routes/hooks';
-import { ChevronLeftIcon, Pen } from 'lucide-react';
+import { ChevronLeftIcon } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
 export default function VehicleDetailPage() {
   const { id } = useParams();
-  const { data, isError, refetch, error, isLoading } =
-    useGetVehicleByIdQuery(id);
+  const { data, isError, refetch, isLoading } = useGetVehicleByIdQuery(
+    id as string
+  );
 
   const router = useRouter();
 
@@ -26,7 +26,6 @@ export default function VehicleDetailPage() {
       {isError ? (
         <>
           <div>Something went wrong</div>
-          <p>{error.status}</p>
           <Button onClick={refetch}>Reload</Button>
         </>
       ) : (
@@ -57,11 +56,14 @@ export default function VehicleDetailPage() {
 
               <CardContent>
                 <div className="grid grid-cols-2 gap-y-4">
-                  <DetailCard label="Name" value={data?.name} />
-                  <DetailCard label="Year" value={data?.year} />
-                  <DetailCard label="Model" value={data?.model} />
-                  <DetailCard label="Make" value={data?.make} />
-                  <DetailCard label="Status" value={data?.status} />
+                  <DetailCard label="Name" value={data?.name as string} />
+                  <DetailCard
+                    label="Year"
+                    value={data?.year.toString() as string}
+                  />
+                  <DetailCard label="Model" value={data?.model as string} />
+                  <DetailCard label="Make" value={data?.make as string} />
+                  <DetailCard label="Status" value={data?.status as string} />
                 </div>
               </CardContent>
             </Card>

@@ -2,7 +2,7 @@ import { Input } from '@/components/ui/input';
 import { Table } from '@tanstack/react-table';
 import { DataTableFacetedFilter } from '@/components/shared/tables/components/data-table-faceted-filter';
 import { DataTableViewOptions } from '@/components/shared/tables/components/data-table-view-options';
-import { mode, role, grade, statuses, carModels } from './filters';
+import { statuses, carModels } from './filters';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
 import {
@@ -19,13 +19,9 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover';
 
-import { Plus } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { Trash2, ListFilter } from 'lucide-react';
 import ExportButton from '@/components/shared/tables/components/export-button';
-import AddGroupModal from './add-vehicle';
-import RoleRender from '@/components/role-render';
 import VehicleTableWithModal from './add-vehicle';
+import { ListFilter } from 'lucide-react';
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;

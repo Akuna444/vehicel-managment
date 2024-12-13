@@ -33,10 +33,11 @@ export type SidebarNavItem = NavItemWithChildren;
 
 // Define the Vehicle type
 export type Vehicle = {
+  _id: string;
   name: string;
   make: string;
   model: string;
-  year: number;
+  year: string;
   status: string;
   image?: string; // Optional
 };

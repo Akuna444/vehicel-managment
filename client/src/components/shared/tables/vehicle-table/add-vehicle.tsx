@@ -9,7 +9,11 @@ export default function VehicleTableWithModal() {
       <div className=" flex justify-end">
         <Button onClick={() => setIsModalOpen(true)}>Add Vehicle</Button>
       </div>
-      <VehicleForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <VehicleForm
+        data={null}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </>
   );
 }

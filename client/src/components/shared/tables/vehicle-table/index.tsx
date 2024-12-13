@@ -25,15 +25,13 @@ import { DataTablePagination } from '@/components/shared/tables/components/pagin
 import { DataTableToolbar } from './toolbar';
 import { columns } from './columns';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
+import { Vehicle } from '@/types';
 
-interface DataTableProps<TData, TValue> {
-  data: TData[];
+interface DataTableProps {
+  data: Vehicle[];
 }
 
-export default function UsersTable<TData, TValue>({
-  data,
-  type = null
-}: DataTableProps<TData, TValue>) {
+export default function VehicleTable({ data }: DataTableProps) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []

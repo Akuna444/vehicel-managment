@@ -4,7 +4,7 @@ import { CellAction } from './cell-action';
 import { Vehicle } from '@/types';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
-import { backendUrl, backendUrlBase } from '@/lib/utils';
+import { backendUrlBase } from '@/lib/utils';
 
 export const columns: ColumnDef<Vehicle>[] = [
   {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,8 +17,17 @@ import {
   DialogHeader,
   DialogTitle
 } from '@/components/ui/dialog';
+import { Vehicle } from '@/types';
 
-const VehicleForm = ({ data = null, isModalOpen, setIsModalOpen }) => {
+const VehicleForm = ({
+  data = null,
+  isModalOpen,
+  setIsModalOpen
+}: {
+  data: Vehicle | null;
+  isModalOpen: boolean;
+  setIsModalOpen: (state: boolean) => void;
+}) => {
   const [addVehicle] = usePostVehicleMutation();
   const [updateVehicle] = useUpdateVehicleMutation();
 
@@ -49,7 +59,7 @@ const VehicleForm = ({ data = null, isModalOpen, setIsModalOpen }) => {
       make: data?.make || '',
       model: data?.model || '',
       year: data?.year || new Date().getFullYear(),
-      status: data?.status || 'active'
+      status: (data?.status as 'active' | 'inactive') || 'active'
     }
   });
 
@@ -201,7 +211,7 @@ const VehicleForm = ({ data = null, isModalOpen, setIsModalOpen }) => {
                 <input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => setImage(e.target.files)}
+                  onChange={(e: any) => setImage(e.target.files)}
                   className="mt-1 w-full"
                 />
               </div>
