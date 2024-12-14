@@ -56,7 +56,7 @@ export default function DashboardNav({
                   <Link
                     to={item.disabled ? '/' : item.href}
                     className={cn(
-                      'flex items-center gap-2 overflow-hidden rounded-md py-2 text-sm font-medium hover:text-muted-foreground',
+                      `flex w-fit items-center gap-2 overflow-hidden rounded-md px-2 py-2 text-sm font-medium hover:text-muted-foreground  ${isMobileNav || (!isMinimized && !isMobileNav) ? 'w-full' : 'w-fit'}`,
                       path === item.href
                         ? 'bg-white text-black hover:text-black'
                         : 'transparent',
@@ -87,7 +87,7 @@ export default function DashboardNav({
             )
           );
         })}
-        <Button className="mt-5 w-[60%]" onClick={handleLogout}>
+        <Button className="mt-5 w-[60%] " onClick={handleLogout}>
           Logout
         </Button>
       </TooltipProvider>
