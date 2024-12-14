@@ -42,7 +42,11 @@ export default function VehicleDetailPage() {
                 </CardHeader>
                 <CardContent className="flex items-center justify-center">
                   <img
-                    src={`${backendUrlBase}/${data?.image}`}
+                    src={
+                      data?.image
+                        ? `${backendUrlBase}/${data?.image}`
+                        : 'https://static.vecteezy.com/system/resources/previews/034/638/038/large_2x/ai-generated-toy-car-avatar-icon-clip-art-sticker-decoration-simple-background-free-photo.jpg'
+                    }
                     className="w-full rounded-[20px]  object-cover "
                   />
                 </CardContent>
@@ -51,7 +55,7 @@ export default function VehicleDetailPage() {
             {/* contact information  */}
             <Card className=" card__detail bg- col-span-1 dark:bg-slate-700 lg:col-span-3">
               <CardHeader className="text-xl font-bold">
-                Contact Information
+                Vehicle Information
               </CardHeader>
 
               <CardContent>

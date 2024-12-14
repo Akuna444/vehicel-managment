@@ -104,134 +104,123 @@ const VehicleForm = ({
   };
 
   return (
-    <div>
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>
-              {' '}
-              {data ? 'Update Vehicle' : 'Add Vehicle'}
-            </DialogTitle>
-          </DialogHeader>
-          <form
-            onSubmit={handleSubmit(handleFormSubmit)}
-            className="space-y-4"
-            encType="multipart/form-data"
-          >
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                Vehicle Name
-              </label>
-              <input
-                type="text"
-                {...register('name')}
-                placeholder="Enter vehicle name"
-                className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-              {errors.name && (
-                <p className="mt-1 text-sm text-red-600">
-                  {errors.name.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                Vehicle Make
-              </label>
-              <input
-                type="text"
-                {...register('make')}
-                placeholder="Enter vehicle make"
-                className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-              {errors.make && (
-                <p className="mt-1 text-sm text-red-600">
-                  {errors.make.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                Vehicle Model
-              </label>
-              <input
-                type="text"
-                {...register('model')}
-                placeholder="Enter vehicle model"
-                className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-              {errors.model && (
-                <p className="mt-1 text-sm text-red-600">
-                  {errors.model.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                Vehicle Year
-              </label>
-              <input
-                type="number"
-                {...register('year', { valueAsNumber: true })}
-                placeholder="Enter vehicle year"
-                className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              />
-              {errors.year && (
-                <p className="mt-1 text-sm text-red-600">
-                  {errors.year.message}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                Vehicle Status
-              </label>
-              <select
-                {...register('status')}
-                className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              >
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-              </select>
-              {errors.status && (
-                <p className="mt-1 text-sm text-red-600">
-                  {errors.status.message}
-                </p>
-              )}
-            </div>
-
-            {!data && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-white">
-                  Vehicle Image
-                </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={(e: any) => setImage(e.target.files)}
-                  className="mt-1 w-full"
-                />
-              </div>
+    <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle> {data ? 'Update Vehicle' : 'Add Vehicle'}</DialogTitle>
+        </DialogHeader>
+        <form
+          onSubmit={handleSubmit(handleFormSubmit)}
+          className="space-y-4"
+          encType="multipart/form-data"
+        >
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">
+              Vehicle Name
+            </label>
+            <input
+              type="text"
+              {...register('name')}
+              placeholder="Enter vehicle name"
+              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+            {errors.name && (
+              <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
             )}
+          </div>
 
-            {/* Submit Button */}
-            <div className="flex justify-end">
-              <Button disabled={addIsLoading || updateIsLoading} type="submit">
-                {addIsLoading || updateIsLoading
-                  ? 'Loading...'
-                  : data
-                    ? 'Update Vehicle'
-                    : 'Add Vehicle'}
-              </Button>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">
+              Vehicle Make
+            </label>
+            <input
+              type="text"
+              {...register('make')}
+              placeholder="Enter vehicle make"
+              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+            {errors.make && (
+              <p className="mt-1 text-sm text-red-600">{errors.make.message}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">
+              Vehicle Model
+            </label>
+            <input
+              type="text"
+              {...register('model')}
+              placeholder="Enter vehicle model"
+              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+            {errors.model && (
+              <p className="mt-1 text-sm text-red-600">
+                {errors.model.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">
+              Vehicle Year
+            </label>
+            <input
+              type="number"
+              {...register('year', { valueAsNumber: true })}
+              placeholder="Enter vehicle year"
+              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            />
+            {errors.year && (
+              <p className="mt-1 text-sm text-red-600">{errors.year.message}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-white">
+              Vehicle Status
+            </label>
+            <select
+              {...register('status')}
+              className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            >
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            {errors.status && (
+              <p className="mt-1 text-sm text-red-600">
+                {errors.status.message}
+              </p>
+            )}
+          </div>
+
+          {!data && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+                Vehicle Image
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e: any) => setImage(e.target.files)}
+                className="mt-1 w-full"
+              />
             </div>
-          </form>
-        </DialogContent>
-      </Dialog>
-    </div>
+          )}
+
+          {/* Submit Button */}
+          <div className="flex justify-end">
+            <Button disabled={addIsLoading || updateIsLoading} type="submit">
+              {addIsLoading || updateIsLoading
+                ? 'Loading...'
+                : data
+                  ? 'Update Vehicle'
+                  : 'Add Vehicle'}
+            </Button>
+          </div>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };
 
